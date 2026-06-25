@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Muslihat Amirulloh — Web3 & AI Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ── Reset ─────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+
+:root{
+  --void:   #080808;
+  --deep:   #0F0F0F;
+  --panel:  #141414;
+  --border: #303030;
+  --silver: #A8A8A8;
+  --dim:    #707070;
+  --white:  #F0F0F0;
+  --off:    #C8C8C8;
+}
+
+body{
+  background:var(--void);
+  color:var(--white);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+}
+
+/* ── GRAIN OVERLAY ─────────────────────────────── */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:999;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.032;
+}
+
+/* ── NAV ───────────────────────────────────────── */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:200;
+  padding:24px 6vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  mix-blend-mode:normal;
+}
+nav::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:6vw;right:6vw;
+  height:1px;
+  background:var(--border);
+}
+.nav-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.1rem;
+  letter-spacing:0.2em;
+  color:var(--white);
+  text-decoration:none;
+}
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:2.5rem;
+}
+.nav-link{
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--silver);
+  text-decoration:none;
+  transition:color .2s;
+}
+.nav-link:hover{color:var(--white)}
+.nav-hire{
+  font-size:0.72rem;
+  font-weight:600;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--void);
+  background:var(--white);
+  padding:9px 20px;
+  text-decoration:none;
+  transition:opacity .2s;
+}
+.nav-hire:hover{opacity:.85}
+
+/* ── HERO ──────────────────────────────────────── */
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Left: photo */
+.hero-photo{
+  position:relative;
+  background:#0A0A0A;
+  overflow:hidden;
+}
+.hero-photo-inner{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+/* Placeholder silhouette */
+.photo-placeholder{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.photo-placeholder-svg{
+  width:55%;
+  opacity:0.12;
+}
+.hero-photo-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right, transparent 70%, var(--void) 100%);
+  pointer-events:none;
+}
+.hero-photo-label{
+  position:absolute;
+  bottom:32px;
+  left:32px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.68rem;
+  color:var(--dim);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+}
+
+/* Right: text */
+.hero-text{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:120px 7vw 80px 5vw;
+  position:relative;
+}
+
+.hero-index{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.7rem;
+  color:var(--dim);
+  letter-spacing:0.2em;
+  margin-bottom:32px;
+}
+
+.hero-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,6.5vw,6.5rem);
+  line-height:0.92;
+  letter-spacing:0.01em;
+  color:var(--white);
+  margin-bottom:8px;
+}
+.hero-name .line2{
+  color:transparent;
+  -webkit-text-stroke:1px #484848;
+}
+
+.hero-alias{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.78rem;
+  color:var(--silver);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  margin-bottom:40px;
+}
+.hero-alias span{color:var(--white)}
+
+.hero-divider{
+  width:40px;
+  height:1px;
+  background:var(--silver);
+  margin-bottom:28px;
+  opacity:0.4;
+}
+
+.hero-roles{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-bottom:48px;
+}
+.role-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:0.82rem;
+  color:var(--off);
+  font-weight:400;
+  letter-spacing:0.04em;
+}
+.role-item::before{
+  content:'';
+  width:20px;height:1px;
+  background:var(--silver);
+  opacity:0.5;
+  flex-shrink:0;
+}
+
+.hero-year{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.68rem;
+  color:var(--dim);
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+}
+
+/* Vertical text decoration */
+.hero-vertical{
+  position:absolute;
+  right:0;
+  top:50%;
+  transform:translateY(-50%) rotate(90deg);
+  transform-origin:center center;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:0.65rem;
+  letter-spacing:0.35em;
+  color:var(--border);
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+/* ── SCROLL INDICATOR ──────────────────────────── */
+.scroll-indicator{
+  position:absolute;
+  bottom:32px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  z-index:10;
+}
+.scroll-line{
+  width:1px;
+  height:48px;
+  background:linear-gradient(to bottom,transparent,var(--silver));
+  animation:scrollDown 2s ease-in-out infinite;
+}
+@keyframes scrollDown{
+  0%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}
+  51%{transform:scaleY(1);transform-origin:bottom}
+  100%{transform:scaleY(0);transform-origin:bottom}
+}
+.scroll-text{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.58rem;
+  color:var(--dim);
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  writing-mode:vertical-rl;
+}
+
+/* ── SECTION COMMONS ───────────────────────────── */
+.s-wrap{
+  padding:100px 6vw;
+  max-width:1280px;
+  margin:0 auto;
+}
+.s-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:64px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:24px;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.s-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.68rem;
+  color:var(--dim);
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.s-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  line-height:0.95;
+  letter-spacing:0.02em;
+  color:var(--white);
+}
+.s-count{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:5rem;
+  color:#484848;
+  line-height:1;
+  flex-shrink:0;
+}
+
+/* ── EXPERTISE ─────────────────────────────────── */
+#expertise{background:var(--deep)}
+
+.exp-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+}
+.exp-cell{
+  background:var(--deep);
+  padding:36px 32px;
+  transition:background .25s;
+  cursor:default;
+}
+.exp-cell:hover{background:var(--panel)}
+
+.exp-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1rem;
+  color:var(--dim);
+  letter-spacing:0.15em;
+  margin-bottom:20px;
+}
+.exp-title{
+  font-size:0.95rem;
+  font-weight:600;
+  color:var(--white);
+  margin-bottom:12px;
+  line-height:1.3;
+}
+.exp-desc{
+  font-size:0.8rem;
+  color:var(--silver);
+  line-height:1.75;
+}
+.exp-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:20px;
+}
+.etag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.65rem;
+  padding:3px 8px;
+  border:1px solid #404040;
+  color:#909090;
+  letter-spacing:0.06em;
+}
+
+/* ── CHRONICLE (timeline) ──────────────────────── */
+
+
+.chron-list{
+  display:flex;
+  flex-direction:column;
+}
+.chron-item{
+  display:grid;
+  grid-template-columns:160px 1px 1fr;
+  gap:0 40px;
+  padding:40px 0;
+  border-bottom:1px solid var(--border);
+  align-items:start;
+}
+.chron-item:first-child{border-top:1px solid var(--border)}
+
+.chron-year{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.72rem;
+  color:var(--dim);
+  letter-spacing:0.12em;
+  padding-top:4px;
+  text-align:right;
+}
+.chron-line-col{
+  background:var(--border);
+  position:relative;
+}
+.chron-line-col::before{
+  content:'';
+  position:absolute;
+  top:6px;left:50%;
+  transform:translate(-50%,-50%);
+  width:7px;height:7px;
+  border:1px solid var(--silver);
+  background:var(--void);
+}
+
+.chron-role{
+  font-size:1rem;
+  font-weight:600;
+  color:var(--white);
+  margin-bottom:4px;
+  line-height:1.3;
+}
+.chron-org{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.7rem;
+  color:var(--dim);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+.chron-desc{
+  font-size:0.85rem;
+  color:var(--silver);
+  line-height:1.75;
+  max-width:600px;
+}
+
+/* ── WORKS (projects) ──────────────────────────── */
+#works{background:var(--deep)}
+
+.works-list{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  background:var(--border);
+}
+.work-row{
+  background:var(--deep);
+  padding:36px 0;
+  display:grid;
+  grid-template-columns:80px 1fr auto;
+  align-items:start;
+  gap:32px;
+  cursor:default;
+  transition:background .2s;
+  padding:36px 32px;
+}
+.work-row:hover{background:var(--panel)}
+
+.work-idx{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:0.85rem;
+  color:var(--dim);
+  letter-spacing:0.15em;
+  padding-top:4px;
+}
+
+
+.work-title{
+  font-size:1rem;
+  font-weight:600;
+  color:var(--white);
+  margin-bottom:8px;
+}
+.work-desc{
+  font-size:0.82rem;
+  color:var(--silver);
+  line-height:1.7;
+  max-width:580px;
+  margin-bottom:16px;
+}
+.work-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.wchip{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.63rem;
+  padding:3px 8px;
+  border:1px solid #404040;
+  color:#909090;
+}
+.work-cat{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.65rem;
+  color:var(--dim);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  padding-top:4px;
+  text-align:right;
+}
+
+/* ── ABOUT ─────────────────────────────────────── */
+#about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:70vh;
+}
+.about-left{
+  background:var(--panel);
+  padding:80px 6vw;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border-right:1px solid var(--border);
+}
+.about-right{
+  padding:80px 6vw;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.about-body{
+  font-size:0.95rem;
+  color:var(--off);
+  line-height:1.9;
+}
+.about-body p+p{margin-top:24px}
+.about-body strong{color:var(--white);font-weight:500}
+
+.about-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--border);
+  margin-top:48px;
+}
+.astat{
+  background:var(--panel);
+  padding:24px;
+}
+.astat-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.8rem;
+  color:var(--white);
+  line-height:1;
+  margin-bottom:4px;
+}
+.astat-label{
+  font-size:0.72rem;
+  color:var(--dim);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  font-family:'JetBrains Mono',monospace;
+}
+
+.about-manifesto{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,4.5vw,4rem);
+  line-height:1.0;
+  color:var(--white);
+  letter-spacing:0.02em;
+  margin-bottom:40px;
+}
+.about-manifesto .outline{
+  color:transparent;
+  -webkit-text-stroke:1px #484848;
+}
+
+/* ── CONTACT ───────────────────────────────────── */
+#contact{
+  border-top:1px solid var(--border);
+}
+.contact-inner{
+  padding:100px 6vw;
+  max-width:1280px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:end;
+}
+.contact-head .s-label{margin-bottom:12px}
+.contact-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,6vw,5.5rem);
+  line-height:0.95;
+  letter-spacing:0.01em;
+  color:var(--white);
+}
+.contact-links{
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+  background:var(--border);
+}
+.clink{
+  background:var(--void);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 24px;
+  text-decoration:none;
+  color:var(--silver);
+  font-size:0.85rem;
+  font-weight:500;
+  letter-spacing:0.04em;
+  transition:background .2s,color .2s;
+  border:none;
+  cursor:pointer;
+}
+.clink:hover{background:var(--white);color:var(--void)}
+.clink-label{display:flex;align-items:center;gap:12px}
+.clink svg{opacity:.5;transition:opacity .2s}
+.clink:hover svg{opacity:1}
+.clink-arr{font-size:0.9rem;transition:transform .2s}
+.clink:hover .clink-arr{transform:translateX(4px)}
+
+/* ── FOOTER ────────────────────────────────────── */
+footer{
+  border-top:1px solid var(--border);
+  padding:24px 6vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.foot-left{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.68rem;
+  color:#606060;
+  letter-spacing:0.1em;
+}
+.foot-right{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.68rem;
+  color:#606060;
+  letter-spacing:0.1em;
+}
+
+/* ── REVEAL ────────────────────────────────────── */
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal.up{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ── CINEMATIC INTRO ───────────────────────────── */
+.hero-photo,
+.hero-text,
+nav{
+  animation:fadeIn 1.2s cubic-bezier(.16,1,.3,1) both;
+}
+nav{animation-delay:.1s}
+.hero-photo{animation-delay:.2s}
+.hero-text{animation-delay:.4s}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:none}
+}
+
+/* ── RESPONSIVE ────────────────────────────────── */
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr}
+  .hero-photo{height:55vw;min-height:260px}
+  .hero-text{padding:60px 7vw 60px}
+  .hero-name{font-size:clamp(3rem,12vw,5rem)}
+  .exp-grid{grid-template-columns:1fr 1fr}
+  .chron-item{grid-template-columns:90px 1px 1fr;gap:0 20px}
+  #about{grid-template-columns:1fr}
+  .about-right{padding:60px 6vw}
+  .about-left{border-right:none;border-bottom:1px solid var(--border)}
+  .contact-inner{grid-template-columns:1fr;gap:48px}
+  .work-row{grid-template-columns:48px 1fr;gap:20px}
+  .work-cat{display:none}
+  .nav-right .nav-link{display:none}
+}
+@media(max-width:600px){
+  .exp-grid{grid-template-columns:1fr}
+  .chron-item{grid-template-columns:70px 1px 1fr;gap:0 16px}
+  .about-stats{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-name">Mintodd</a>
+  <div class="nav-right">
+    <a href="#expertise" class="nav-link">Expertise</a>
+    <a href="#chronicle" class="nav-link">Chronicle</a>
+    <a href="#works" class="nav-link">Works</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#contact" class="nav-hire">Open to Work</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+
+  <!-- LEFT: Photo -->
+  <div class="hero-photo">
+    <div class="hero-photo-inner">
+      <!-- GANTI src ini dengan path foto lo, contoh: src="foto.jpg" -->
+      <img
+        id="heroImg"
+        src="profil.jpg"
+        alt="Muslihat Amirulloh"
+        class="photo-placeholder"
+        onerror="this.style.display='none'"
+        style="display:none"
+      />
+      <!-- Placeholder silhouette (hilang otomatis saat foto diset) -->
+      <svg id="silhouette" class="photo-placeholder-svg" viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="72" rx="44" ry="44" fill="#1A1A1A"/>
+        <path d="M16 230 C16 175 48 148 100 148 C152 148 184 175 184 230 L184 280 L16 280 Z" fill="#1A1A1A"/>
+      </svg>
+    </div>
+    <div class="hero-photo-overlay"></div>
+    <div class="hero-photo-label">Muslihat Amirulloh / Portrait</div>
+  </div>
+
+  <!-- RIGHT: Text -->
+  <div class="hero-text">
+    <div class="hero-index">001 / Introduction</div>
+
+    <div class="hero-name">
+      MUSLIHAT<br>AMIRULLOH
+    </div>
+    <div class="hero-alias">AKA <span>Mintodd</span></div>
+
+    <div class="hero-divider"></div>
+
+    <div class="hero-roles">
+      <div class="role-item">Web3 Ecosystem Builder</div>
+      <div class="role-item">AI Specialist & Integrator</div>
+      <div class="role-item">On-Chain Protocol Pioneer</div>
+      <div class="role-item">Community Architect</div>
+      <div class="role-item">Social Media Strategist</div>
+    </div>
+
+    <div class="hero-year">Est. 2024 — Active Now</div>
+
+    <div class="hero-vertical">AMIRULLOH — WEB3 × AI</div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-text">Scroll</div>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="s-wrap">
+    <div class="s-header reveal">
+      <div>
+        <div class="s-label">Core Domains</div>
+        <div class="s-title">Expertise</div>
+      </div>
+      <div class="s-count">06</div>
+    </div>
+
+    <div class="exp-grid">
+
+      <div class="exp-cell reveal">
+        <div class="exp-num">01</div>
+        <div class="exp-title">AI Specialist & Integrator</div>
+        <div class="exp-desc">Designing AI-powered solutions for Web3 ecosystems and digital communities — from prompt engineering and workflow automation to deploying products built on large language models.</div>
+        <div class="exp-tags">
+          <span class="etag">Prompt Eng.</span>
+          <span class="etag">LLM</span>
+          <span class="etag">AI Automation</span>
+          <span class="etag">RAG</span>
+        </div>
+      </div>
+
+      <div class="exp-cell reveal reveal-delay-1">
+        <div class="exp-num">02</div>
+        <div class="exp-title">On-Chain Protocol Pioneer</div>
+        <div class="exp-desc">First boots on the ground at every protocol genesis — stress-testing blockchain infrastructure before mainnet, running nodes, interacting with smart contracts, and filing bug reports directly to core dev teams.</div>
+        <div class="exp-tags">
+          <span class="etag">Node Ops</span>
+          <span class="etag">EVM</span>
+          <span class="etag">Smart Contract</span>
+          <span class="etag">DeFi</span>
+        </div>
+      </div>
+
+      <div class="exp-cell reveal reveal-delay-2">
+        <div class="exp-num">03</div>
+        <div class="exp-title">Community Architect</div>
+        <div class="exp-desc">Building community foundations from zero to thousands of active members — moderation ops, ambassador programs, onboarding flows, and engagement systems engineered for long-term loyalty.</div>
+        <div class="exp-tags">
+          <span class="etag">Discord</span>
+          <span class="etag">Telegram</span>
+          <span class="etag">DAO Ops</span>
+          <span class="etag">Ambassador</span>
+        </div>
+      </div>
+
+      <div class="exp-cell reveal">
+        <div class="exp-num">04</div>
+        <div class="exp-title">Social Media Strategist</div>
+        <div class="exp-desc">Turning complex technology into narratives that move people — high-converting threads, organic viral campaigns, and brand positioning at the intersection of crypto, AI, and digital culture.</div>
+        <div class="exp-tags">
+          <span class="etag">X / Twitter</span>
+          <span class="etag">Growth</span>
+          <span class="etag">Copywriting</span>
+          <span class="etag">Campaign</span>
+        </div>
+      </div>
+
+      <div class="exp-cell reveal reveal-delay-1">
+        <div class="exp-num">05</div>
+        <div class="exp-title">Developer & Automator</div>
+        <div class="exp-desc">Building tools, bots, and automation pipelines that eliminate repetitive work elegantly — from Web3 scripting and API integration to dashboards that monitor on-chain activity in real time.</div>
+        <div class="exp-tags">
+          <span class="etag">JavaScript</span>
+          <span class="etag">Python</span>
+          <span class="etag">Web3.js</span>
+          <span class="etag">Bot Dev</span>
+        </div>
+      </div>
+
+      <div class="exp-cell reveal reveal-delay-2">
+        <div class="exp-num">06</div>
+        <div class="exp-title">Community Service Lead</div>
+        <div class="exp-desc">Managing the full user experience lifecycle in decentralized ecosystems — support operations, conflict resolution, documentation, and onboarding that ensures every member finds their value.</div>
+        <div class="exp-tags">
+          <span class="etag">User Support</span>
+          <span class="etag">Moderation</span>
+          <span class="etag">Docs</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CHRONICLE -->
+<section id="chronicle">
+  <div class="s-wrap">
+    <div class="s-header reveal">
+      <div>
+        <div class="s-label">Track Record</div>
+        <div class="s-title">Chronicle</div>
+      </div>
+      <div class="s-count">2+</div>
+    </div>
+
+    <div class="chron-list">
+
+      <div class="chron-item reveal">
+        <div class="chron-year">2024 — Now</div>
+        <div class="chron-line-col"></div>
+        <div class="chron-body">
+          <div class="chron-role">AI Specialist & Integration Lead</div>
+          <div class="chron-org">Web3 & AI Industry</div>
+          <div class="chron-desc">Leading AI integration across community operations and Web3 products. Designing LLM-based systems, building automation pipelines, and consulting on AI strategy for decentralized ecosystem projects. Bridging the gap between cutting-edge AI and the real needs of blockchain communities.</div>
+        </div>
+      </div>
+
+      <div class="chron-item reveal">
+        <div class="chron-year">2024 — Now</div>
+        <div class="chron-line-col"></div>
+        <div class="chron-body">
+          <div class="chron-role">Community Manager & Moderator</div>
+          <div class="chron-org">Multiple Web3 Protocols</div>
+          <div class="chron-desc">Managing communities across platforms for various blockchain projects — from seed stage through mainnet launch. Designing moderation frameworks, building ambassador teams, and creating environments where members grow and contribute meaningfully.</div>
+        </div>
+      </div>
+
+      <div class="chron-item reveal">
+        <div class="chron-year">2024 — Now</div>
+        <div class="chron-line-col"></div>
+        <div class="chron-body">
+          <div class="chron-role">On-Chain Protocol Pioneer</div>
+          <div class="chron-org">Web3 Ecosystem — 10+ Networks</div>
+          <div class="chron-desc">Among the first to engage at genesis on every new protocol — running nodes, stress-testing smart contracts, identifying vulnerabilities, and participating in genesis events that shape initial ecosystem distribution. Bug reports have been acknowledged directly by core developer teams.</div>
+        </div>
+      </div>
+
+      <div class="chron-item reveal">
+        <div class="chron-year">2024 — Now</div>
+        <div class="chron-line-col"></div>
+        <div class="chron-body">
+          <div class="chron-role">Social Media Specialist</div>
+          <div class="chron-org">Web3 & AI Brands</div>
+          <div class="chron-desc">Building and executing social media strategies for Web3 and AI projects — producing content that educates, moves, and converts. Specialist in X/Twitter narrative building and community-driven content marketing that drives organic reach.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="s-wrap">
+    <div class="s-header reveal">
+      <div>
+        <div class="s-label">Selected Projects</div>
+        <div class="s-title">Works</div>
+      </div>
+      <div class="s-count">06</div>
+    </div>
+
+    <div class="works-list">
+
+      <div class="work-row reveal">
+        <div class="work-idx">W.01</div>
+        <div class="work-info">
+          <div class="work-title">AI-Powered Community Intelligence System</div>
+          <div class="work-desc">An AI-driven moderation and analytics system that detects scams, spam, and community anomalies in real time. Cut manual intervention by 70% while improving the overall quality of community interaction.</div>
+          <div class="work-chips">
+            <span class="wchip">Python</span>
+            <span class="wchip">OpenAI API</span>
+            <span class="wchip">Discord Bot</span>
+            <span class="wchip">NLP</span>
+          </div>
+        </div>
+        <div class="work-cat">AI × Community</div>
+      </div>
+
+      <div class="work-row reveal">
+        <div class="work-idx">W.02</div>
+        <div class="work-info">
+          <div class="work-title">Multi-Chain Genesis Testing Operations</div>
+          <div class="work-desc">Active participation at the genesis phase of 10+ blockchain networks — node deployment, validator operations, and protocol stress testing. Bug reports produced contributed directly to protocol security before mainnet launch.</div>
+          <div class="work-chips">
+            <span class="wchip">EVM</span>
+            <span class="wchip">Cosmos SDK</span>
+            <span class="wchip">Node Operations</span>
+            <span class="wchip">Solidity</span>
+          </div>
+        </div>
+        <div class="work-cat">Web3 × Infra</div>
+      </div>
+
+      <div class="work-row reveal">
+        <div class="work-idx">W.03</div>
+        <div class="work-info">
+          <div class="work-title">Community Scaling Architecture</div>
+          <div class="work-desc">Led a community transformation from 500 to 15,000+ active members in 6 months. Designed ambassador programs, weekly protocol deep-dives, and an engagement gamification system that significantly improved retention rates.</div>
+          <div class="work-chips">
+            <span class="wchip">Discord</span>
+            <span class="wchip">Ambassador Program</span>
+            <span class="wchip">Community Ops</span>
+          </div>
+        </div>
+        <div class="work-cat">Community</div>
+      </div>
+
+      <div class="work-row reveal">
+        <div class="work-idx">W.04</div>
+        <div class="work-info">
+          <div class="work-title">Viral Protocol Narrative Campaign</div>
+          <div class="work-desc">Content campaign for an emerging DeFi project — produced a thread series with 500K+ organic impressions and drove 2,000+ wallet sign-ups within one week, zero ad budget. Pure narrative. Pure strategy.</div>
+          <div class="work-chips">
+            <span class="wchip">X / Twitter</span>
+            <span class="wchip">Content Strategy</span>
+            <span class="wchip">Growth Ops</span>
+          </div>
+        </div>
+        <div class="work-cat">Social Media</div>
+      </div>
+
+      <div class="work-row reveal">
+        <div class="work-idx">W.05</div>
+        <div class="work-info">
+          <div class="work-title">Cross-Chain Portfolio Intelligence Tool</div>
+          <div class="work-desc">Automation tool for tracking on-chain activity across protocols — parsing blockchain data, deadline notifications for genesis events, and a portfolio aggregator that consolidates positions from multiple chains into a single dashboard.</div>
+          <div class="work-chips">
+            <span class="wchip">JavaScript</span>
+            <span class="wchip">Web3.js</span>
+            <span class="wchip">API Integration</span>
+            <span class="wchip">Telegram Bot</span>
+          </div>
+        </div>
+        <div class="work-cat">Dev × Web3</div>
+      </div>
+
+      <div class="work-row reveal">
+        <div class="work-idx">W.06</div>
+        <div class="work-info">
+          <div class="work-title">AI Research Digest Pipeline</div>
+          <div class="work-desc">Automated pipeline that curates, summarizes, and distributes the latest research at the intersection of AI and blockchain — using LLMs to transform dense technical papers into digestible insights for the Web3 community.</div>
+          <div class="work-chips">
+            <span class="wchip">Python</span>
+            <span class="wchip">LLM</span>
+            <span class="wchip">RAG</span>
+            <span class="wchip">Newsletter</span>
+          </div>
+        </div>
+        <div class="work-cat">AI × Research</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <div class="s-label reveal">The Person</div>
+    <div class="about-manifesto reveal">
+      NOT A<br>SPECTATOR<br><span class="outline">OF THE</span><br>FUTURE
+    </div>
+    <div class="about-stats">
+      <div class="astat reveal">
+        <div class="astat-num">2+</div>
+        <div class="astat-label">Years Active</div>
+      </div>
+      <div class="astat reveal reveal-delay-1">
+        <div class="astat-num">10+</div>
+        <div class="astat-label">Protocols Pioneered</div>
+      </div>
+      <div class="astat reveal reveal-delay-2">
+        <div class="astat-num">20+</div>
+        <div class="astat-label">Projects Shipped</div>
+      </div>
+      <div class="astat reveal reveal-delay-3">
+        <div class="astat-num">∞</div>
+        <div class="astat-label">Curiosity</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-body reveal">
+      <p>My name is <strong>Muslihat Amirulloh</strong> — the industry knows me as <strong>Mintodd</strong>. Not a random alias, but an identity forged from two-plus years on the bleeding edge of Web3 and AI.</p>
+      <p>I'm not the type to watch the decentralized revolution from the sidelines. Every time a new protocol launches, I'm already there — testing it, building its community, and integrating AI before most people even know its name.</p>
+      <p>The combination of <strong>technical depth + community instinct + AI fluency</strong> is my core weapon. This intersection is exactly where Web3 products live or die. And that's where I operate.</p>
+      <p>Every genesis event I've participated in, every community I've built, every campaign I've executed — all of it shapes a perspective that can't be bought: a genuine insider understanding of how this ecosystem actually works.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-head reveal">
+      <div class="s-label">Get in Touch</div>
+      <div class="contact-title">Let's<br>Build<br>Together</div>
+    </div>
+    <div class="contact-links reveal">
+      <a href="mailto:gamegut50@gmail.com" class="clink">
+        <span class="clink-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="1.5"/><path d="m22 6-10 7L2 6"/></svg>
+          Email
+        </span>
+        <span class="clink-arr">→</span>
+      </a>
+      <a href="https://x.com/pemulung849273" target="_blank" class="clink">
+        <span class="clink-label">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X / Twitter
+        </span>
+        <span class="clink-arr">→</span>
+      </a>
+      <a href="https://t.me/mintodd12" target="_blank" class="clink">
+        <span class="clink-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+          Telegram
+        </span>
+        <span class="clink-arr">→</span>
+      </a>
+      <a href="https://www.linkedin.com/in/mintodd-d-8153b9372" target="_blank" class="clink">
+        <span class="clink-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </span>
+        <span class="clink-arr">→</span>
+      </a>
+      <a href="https://discord.com/users/mintodd12" target="_blank" class="clink">
+        <span class="clink-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          Discord
+        </span>
+        <span class="clink-arr">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-left">© 2024 Muslihat Amirulloh — All rights reserved</div>
+  <div class="foot-right">Built for the decentralized future</div>
+</footer>
+
+<script>
+/* ── Scroll Reveal ──────────────────────────────── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('up') });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── Photo uploader hint (dev helper) ──────────── */
+// Untuk pasang foto: ganti src pada #heroImg
+// Contoh: document.getElementById('heroImg').src = 'foto-gue.jpg'
+// atau set langsung di HTML: <img src="foto-gue.jpg" ...>
+const img = document.getElementById('heroImg');
+const sil = document.getElementById('silhouette');
+if(img && img.src && img.src !== window.location.href) {
+  img.style.display = 'block';
+  if(sil) sil.style.display = 'none';
+}
+</script>
+</body>
+</html>
